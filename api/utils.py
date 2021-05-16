@@ -1,8 +1,8 @@
 import json
 
 
-def load_topics() -> dict:
+def load_topics() -> list:
     with open("channels.json",'r') as channels:
             currents = json.load(channels)
             channels.close()
-    return currents
+    return list(currents["channels"])
