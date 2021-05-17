@@ -8,7 +8,6 @@ FROM python:3.8
 WORKDIR /app
 COPY . .
 COPY --from=base /app/venv/ /app/venv
-RUN chmod +x /app/entrypoint.sh
 ENV MQTT_SERVER=localhost
 EXPOSE 8000
 ENTRYPOINT ["/app/venv/bin/python","/app/main.py"]
