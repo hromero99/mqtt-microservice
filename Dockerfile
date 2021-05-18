@@ -10,4 +10,5 @@ COPY . .
 COPY --from=base /app/venv/ /app/venv
 ENV MQTT_SERVER=localhost
 EXPOSE 8000
+RUN echo  '{"channels": []}' >> channels.json
 ENTRYPOINT ["/app/venv/bin/python","/app/main.py"]
