@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 import os
+import requests
 
 
 def on_connect(client, user_data, flags, rc):
@@ -10,6 +11,7 @@ def on_connect(client, user_data, flags, rc):
 def on_message(client, userdata, msg):
     # Function for getting message
     print(msg.topic + " " + str(msg.payload))
+    r = requests.post(f"{os.getenv('DATA_ENCRYPTOR')}/encrypt/",json={"device_id": "testing", "message": msg.payload})
 
 
 def mqtt_connect(topic):
